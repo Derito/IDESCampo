@@ -7,12 +7,12 @@ import javax.persistence.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Data
-public class Permissao {
+public class Permissao extends AbstractEntity{
 
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+   // @EqualsAndHashCode.Include
+   // @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //private Long id;
 
     @Column(nullable = false)
     private  String nomePer;

@@ -1,5 +1,5 @@
 package org.helderito.idescampo.security.filter;
-
+/*
 import java.util.concurrent.TimeUnit;
 
 public class Constants {
@@ -14,3 +14,4 @@ public class Constants {
 		System.out.println(TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS));
 	}
 }
+*/

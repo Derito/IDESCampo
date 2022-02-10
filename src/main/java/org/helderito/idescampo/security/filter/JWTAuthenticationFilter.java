@@ -1,5 +1,5 @@
 package org.helderito.idescampo.security.filter;
-
+/*
 import java.io.IOException;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -27,11 +27,12 @@ import static org.helderito.idescampo.security.filter.Constants.EXPIRATION_TIME;
 import static org.helderito.idescampo.security.filter.Constants.SECRET;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
-	
+*/
 	
 	/*
 	 * Quem é voçe!
 	 */
+/*
 	private AuthenticationManager authenticationManager;
 	
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
@@ -66,6 +67,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				.compact();
 	}
 }
-
+*/
 	
 

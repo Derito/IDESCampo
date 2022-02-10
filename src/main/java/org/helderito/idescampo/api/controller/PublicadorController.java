@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "/publicadores")
+@RequestMapping(value = "/v2")
 public class PublicadorController {
    
     private PublicadorAssembler publicadorAssembler;
@@ -28,7 +28,7 @@ public class PublicadorController {
     	return publicadorAssembler.toCollectionModel(publicadorService.listar());
     }
 
-    @GetMapping("/{Id}")
+    @GetMapping("/protected/publicadores/{Id}")
 	public ResponseEntity<PublicadorModel> buscar(@PathVariable Long publicadorId) {		
 		return publicadorService.buscar(publicadorId)
 				.map(publicador -> ResponseEntity.ok(publicadorAssembler.toModel(publicador)))

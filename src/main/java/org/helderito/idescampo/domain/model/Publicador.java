@@ -16,12 +16,12 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Publicador implements Serializable{
+public class Publicador extends AbstractEntity implements Serializable{
 
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    //@EqualsAndHashCode.Include
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //private  Long id;
    
 	private static final long serialVersionUID = 1L;
 	

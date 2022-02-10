@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/paises")
+@RequestMapping("/v1")
 public class PaisController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class PaisController {
         return paisRepository.findAll();
     }
 
-    @GetMapping("/{paisId}")
+    @GetMapping("protected/paises/{paisId}")
     public Pais buscar(@PathVariable Long paisId) {
         return paisService.buscarOuFalhar(paisId);
     }
@@ -37,7 +37,7 @@ public class PaisController {
         return paisService.salvar(pais);
     }
 
-    @PutMapping("/{paisId}")
+    @PutMapping("protected/paises/{paisId}")
     public Pais atualizar(@PathVariable Long paisId,
                                             @RequestBody @Valid Pais pais) {
         Pais paisActual = paisService.buscarOuFalhar(paisId);
@@ -45,7 +45,7 @@ public class PaisController {
         return paisService.salvar(paisActual);
         }
 
-    @DeleteMapping("/{paisId}")
+    @DeleteMapping("protected/paises/{paisId}")
     public void remover(@PathVariable Long paisId) {
             paisService.excluir(paisId);
     }

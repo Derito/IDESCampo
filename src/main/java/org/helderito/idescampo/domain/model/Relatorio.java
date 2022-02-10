@@ -12,14 +12,14 @@ import java.time.OffsetDateTime;
 @RequiredArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Relatorio implements Serializable{
+public class Relatorio extends AbstractEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	//@EqualsAndHashCode.Include
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //private Long id;
 
     @Column(nullable = false)
     private String mes;    

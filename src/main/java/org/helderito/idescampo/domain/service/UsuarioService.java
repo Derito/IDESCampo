@@ -1,30 +1,36 @@
 package org.helderito.idescampo.domain.service;
 
-import javax.validation.Valid;
 
-import org.helderito.idescampo.api.model.input.UsuarioInputModel;
-import org.helderito.idescampo.domain.model.Publicador;
+import lombok.RequiredArgsConstructor;
 import org.helderito.idescampo.domain.model.Usuario;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.helderito.idescampo.domain.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
-import lombok.AllArgsConstructor;
+import java.util.List;
+import java.util.Optional;
 
-@AllArgsConstructor
-@Service
-public class UsuarioService {
 
-//	/*
-//	 * Chama a classe que contêm o metodo buscar por id
-//	 */
-//	private BuscaPublicadorService buscaPublicadorService;
-//	
-//	@Transactional
-//	public Usuario registrar(Long publicadorId , Class<? extends @Valid 
-//			UsuarioInputModel> class1) {
-//		
-//		Publicador publicador = buscaPublicadorService.buscar(publicadorId);
-//		
-//		return publicador;
-//	}
+@RequiredArgsConstructor
+@Component
+public class UsuarioService implements UserDetailsService {
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String nomeUsuario) throws UsernameNotFoundException {
+     Usuario uso =  Optional.ofNullable(usuarioRepository.findByNomeUsuario(nomeUsuario)).orElseThrow(()->
+               new UsernameNotFoundException("User not found!"));
+
+        List<GrantedAuthority> adminsAuthorityList = AuthorityUtils.createAuthorityList("ROLE_USER","ROLE_ADMIN");
+        List<GrantedAuthority> usersAuthorityList = AuthorityUtils.createAuthorityList("ROLE_USER");
+
+        return  new org.springframework.security.core.userdetails.User(uso.getNomeUsuario(),uso.getSenha(),uso.isAdmin() ? adminsAuthorityList : usersAuthorityList);    }
 }

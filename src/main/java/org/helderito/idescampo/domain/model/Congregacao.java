@@ -16,15 +16,15 @@ import java.util.List;
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Congregacao implements Serializable{
+public class Congregacao extends AbstractEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@NotNull(groups = Groups.CongregacaoId.class)
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+	//@NotNull(groups = Groups.CongregacaoId.class)
+    //@EqualsAndHashCode.Include
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    //private  Long id;
 
     @NotBlank
     @Column(name = "nome", nullable = false)

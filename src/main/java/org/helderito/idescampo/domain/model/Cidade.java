@@ -15,14 +15,14 @@ import javax.validation.groups.Default;
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Cidade implements Serializable{
+public class Cidade extends AbstractEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	//@EqualsAndHashCode.Include
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //private Long id;
 
     @Column(nullable = false)
     @NotBlank

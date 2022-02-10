@@ -14,15 +14,15 @@ import javax.validation.constraints.Size;
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Pais implements Serializable{
+public class Pais extends AbstractEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@NotNull(groups = Groups.PaisId.class)
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	//@NotNull(groups = Groups.PaisId.class)
+   // @EqualsAndHashCode.Include
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //private Long id;
 
     @Column(nullable = false)
     @NotBlank
