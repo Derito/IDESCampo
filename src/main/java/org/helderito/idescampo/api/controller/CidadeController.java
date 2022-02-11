@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/cidades")
+@RequestMapping(value = "v3")
 public class CidadeController {
 
     @Autowired
@@ -25,17 +25,17 @@ public class CidadeController {
     @Autowired
     private CidadeService cidadeService;
 
-    @GetMapping
+    @GetMapping(path = "protected/cidades")
     public List<Cidade> listar() {
         return cidadeRepository.findAll();
     }
 
-    @GetMapping("/{cidadeId}")
+    @GetMapping("protected/cidades/{cidadeId}")
     public Cidade buscar(@PathVariable Long cidadeId) {
         return cidadeService.buscarOuFalhar(cidadeId);
     }
 
-    @PostMapping
+    @PostMapping(path = "admin/cidades")
     @ResponseStatus(HttpStatus.CREATED)
     public Cidade adicionar(@RequestBody @Valid Cidade cidade) {
         try {
@@ -45,7 +45,7 @@ public class CidadeController {
         }
     }
 
-    @PutMapping("/{cidadeId}")
+    @PutMapping("admin/cidades/{cidadeId}")
     public Cidade atualizar(@PathVariable Long cidadeId,@RequestBody @Valid Cidade cidade) {
         try {
             Cidade cidadeAtual = cidadeService.buscarOuFalhar(cidadeId);
@@ -56,7 +56,7 @@ public class CidadeController {
         }
     }
 
-    @DeleteMapping("/{cidadeId}")
+    @DeleteMapping("admin/cidades/{cidadeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable Long cidadeId) {
                  cidadeService.excluir(cidadeId);

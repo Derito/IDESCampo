@@ -21,7 +21,7 @@ public class PaisController {
     @Autowired
     private PaisService paisService;
 
-    @GetMapping
+    @GetMapping(path = "protected/paises")
     public List<Pais> listar() {
         return paisRepository.findAll();
     }
@@ -31,7 +31,7 @@ public class PaisController {
         return paisService.buscarOuFalhar(paisId);
     }
 
-    @PostMapping
+    @PostMapping(path = "protected/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Pais adicionar(@RequestBody @Valid Pais pais) {
         return paisService.salvar(pais);

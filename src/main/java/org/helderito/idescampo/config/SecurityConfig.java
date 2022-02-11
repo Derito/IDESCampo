@@ -26,15 +26,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                //.anyRequest().authenticated()
                 .antMatchers("/*/protected/**").hasRole("USER")
                 .antMatchers("/*/admin/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
+                //.anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll()
-                .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login").permitAll();
-               // .httpBasic()
+               // .formLogin().loginPage("/login").permitAll()
                 //.and()
-                //.csrf().disable();
+               // .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                //.logoutSuccessUrl("/login").permitAll();
+                .httpBasic()
+                .and()
+                .csrf().disable();
     }
 
     @Override
