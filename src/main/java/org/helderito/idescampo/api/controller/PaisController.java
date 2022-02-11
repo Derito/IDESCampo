@@ -6,6 +6,7 @@ import org.helderito.idescampo.domain.service.PaisService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -22,13 +23,13 @@ public class PaisController {
     private PaisService paisService;
 
     @GetMapping(path = "protected/paises")
-    public List<Pais> listar() {
-        return paisRepository.findAll();
+    public ResponseEntity<?> listar() {
+        return new ResponseEntity(paisRepository.findAll(),HttpStatus.FOUND);
     }
 
     @GetMapping("protected/paises/{paisId}")
-    public Pais buscar(@PathVariable Long paisId) {
-        return paisService.buscarOuFalhar(paisId);
+    public ResponseEntity<?> buscar(@PathVariable Long paisId) {
+        return new ResponseEntity(paisService.buscarOuFalhar(paisId),HttpStatus.FOUND);
     }
 
     @PostMapping(path = "protected/save")

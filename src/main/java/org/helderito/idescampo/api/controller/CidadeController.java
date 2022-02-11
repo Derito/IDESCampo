@@ -8,11 +8,12 @@ import org.helderito.idescampo.domain.repository.CidadeRepository;
 import org.helderito.idescampo.domain.service.CidadeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 
 @RestController
@@ -26,13 +27,13 @@ public class CidadeController {
     private CidadeService cidadeService;
 
     @GetMapping(path = "protected/cidades")
-    public List<Cidade> listar() {
-        return cidadeRepository.findAll();
+    public ResponseEntity<?> listarTudo() {
+        return new ResponseEntity(cidadeRepository.findAll(),HttpStatus.FOUND);
     }
 
     @GetMapping("protected/cidades/{cidadeId}")
-    public Cidade buscar(@PathVariable Long cidadeId) {
-        return cidadeService.buscarOuFalhar(cidadeId);
+    public ResponseEntity<?> buscar(@PathVariable Long cidadeId) {
+        return new ResponseEntity(cidadeService.buscarOuFalhar(cidadeId),HttpStatus.FOUND);
     }
 
     @PostMapping(path = "admin/cidades")
